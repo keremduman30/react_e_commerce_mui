@@ -1,11 +1,12 @@
-import { Home } from "@mui/icons-material";
 import "./App.css";
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import Products from "./pages/Products";
 import Product from "./pages/Product";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import { Stack } from "@mui/material";
+import { Stack, ThemeProvider } from "@mui/material";
+import Home from "./pages/Home";
+import { theme } from "./actions/theme";
 
 const Layout = () => {
   return (
@@ -37,10 +38,13 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <ThemeProvider theme={theme}>
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </>
   );
 }
