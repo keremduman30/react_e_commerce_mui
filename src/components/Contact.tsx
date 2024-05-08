@@ -1,15 +1,22 @@
-import { Box, Stack, Typography, styled } from "@mui/material";
+import { Box, Stack, TextField, Typography, styled } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import GoogleIcon from "@mui/icons-material/Google";
 import PinterestIcon from "@mui/icons-material/Pinterest";
-
+/* 
 const StyledInput = styled("input")({
   backgroundColor: "white",
   padding: "10px",
   border: "none",
   borderRadius: "5px 0 0 5px",
+  "&:focus": {
+    outline: "none",
+  },
+}); */
+const StyledTextField = styled(TextField)({
+  backgroundColor: "white",
+
   "&:focus": {
     outline: "none",
   },
@@ -45,7 +52,16 @@ const Contact = () => {
           BE IN TOUCH WIHT US
         </Typography>
         <Stack direction={"row"}>
-          <StyledInput />
+          {/* <StyledInput /> */}
+          <StyledTextField
+            size="small"
+            variant="outlined"
+            sx={{
+              "& input:focus": {
+                outline: "none",
+              },
+            }}
+          />
           <StyledButton>Join US</StyledButton>
         </Stack>
         <Stack direction={"row"} gap={2} alignItems={"center"}>

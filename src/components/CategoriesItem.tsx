@@ -3,6 +3,7 @@ import { styled } from "@mui/system";
 import { CategoryItem } from "../services/fake_data";
 import { Link } from "react-router-dom";
 
+
 export type CategoriesItemProp = {
   item: CategoryItem;
 };
