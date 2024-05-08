@@ -31,6 +31,7 @@ const footerLinks: NavTypeFooter[] = [
 const StyledTypography = styled(Typography)({
   cursor: "pointer",
   color: "gray",
+  textAlign: "justify",
   fontSize: "14px",
   "&:hover": {
     color: "#2D3748",
@@ -39,7 +40,7 @@ const StyledTypography = styled(Typography)({
 
 const Footer = () => {
   return (
-    <Box sx={{ margin: "100px 200px 200px 200px" }}>
+    <Box sx={{ margin: "100px 180px 180px 200px" }}>
       <Grid container spacing={5}>
         {footerLinks.map((e, i) => (
           <Grid item xs={12} sm={6} md={4} lg={3}>
@@ -53,14 +54,18 @@ const Footer = () => {
             >
               {e.title}
             </Typography>
-            <Stack gap={2}>
+            <Stack spacing={1}>
               {e.links &&
                 e.links.map((e) => (
                   <Link to={`/#${e}`} key={e}>
                     {i < 2 ? (
                       <StyledTypography>{e}</StyledTypography>
                     ) : (
-                      <Typography color={"gray"} fontSize={14}>
+                      <Typography
+                        color={"gray"}
+                        fontSize={14}
+                        textAlign={"justify"}
+                      >
                         {e}
                       </Typography>
                     )}
