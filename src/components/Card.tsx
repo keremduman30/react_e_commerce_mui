@@ -49,8 +49,8 @@ const StyledTypography = styled(Typography)({
 });
 const Card = ({ item }: CardProp) => {
   return (
-    <StyledCardContainer>
-      <Link to={`/product/${item.id}`}>
+    <Link to={`/product/${item.id}`}>
+      <StyledCardContainer>
         <StyledImgBox>
           {item.isNew && <StyledTypography>New Season</StyledTypography>}
           <StyledImg src={item.img} alt="" className="img1" />
@@ -72,8 +72,8 @@ const Card = ({ item }: CardProp) => {
             ${item.price}
           </Typography>
         </Stack>
-      </Link>
-    </StyledCardContainer>
+      </StyledCardContainer>
+    </Link>
   );
 };
 
