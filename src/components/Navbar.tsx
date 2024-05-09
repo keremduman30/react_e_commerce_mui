@@ -55,7 +55,7 @@ const Icons = styled(Box)(({ theme }) => ({
 */
 
 const Navbar = () => {
-  const [selectLang, setLanguage] = useState<"tr" | "usd">("usd");
+  const [selectLang, setLanguage] = useState("usd");
   const handleClose = (e) => {
     setLanguage(e.target.value);
   };
@@ -123,7 +123,7 @@ const Navbar = () => {
           </Select>
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
             {categories.map((e) => (
-              <a href={e.link}>
+              <a href={e.link} key={e.name}>
                 <StyledTypography key={e.link}>{e.name}</StyledTypography>
               </a>
             ))}
