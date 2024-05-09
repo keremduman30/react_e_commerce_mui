@@ -1,4 +1,12 @@
-import { Badge, Box, Select, Stack, Typography, styled } from "@mui/material";
+import {
+  Badge,
+  Box,
+  Button,
+  Select,
+  Stack,
+  Typography,
+  styled,
+} from "@mui/material";
 import { ReactElement, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
@@ -6,6 +14,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MenuItem from "@mui/material/MenuItem";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"; // İstediğiniz simgeyi burada kullanabilirsiniz
+import BasketCard from "./BasketCard";
 
 type NavType = {
   link: string;
@@ -55,12 +64,13 @@ const Icons = styled(Box)(({ theme }) => ({
 */
 
 const Navbar = () => {
+  const [openCard, setopenCard] = useState<boolean>(false);
   const [selectLang, setLanguage] = useState("usd");
   const handleClose = (e) => {
     setLanguage(e.target.value);
   };
   return (
-    <Box sx={{ height: "80px" }}>
+    <Box sx={{ height: "80px", margin: "0px" }}>
       <Stack
         direction={"row"}
         justifyContent={"space-between"}
@@ -153,6 +163,7 @@ const Navbar = () => {
               <Badge
                 badgeContent={4}
                 color="primary"
+                onClick={() => setopenCard(!openCard)}
                 sx={{ cursor: "pointer" }}
               >
                 {e.icon}
@@ -161,6 +172,7 @@ const Navbar = () => {
           )}
         </Stack>
       </Stack>
+      {openCard && <BasketCard />}
     </Box>
   );
 };
