@@ -19,7 +19,7 @@ const StyledTypography = styled(Typography)({
   backgroundColor: "white",
   minWidth: "100px",
   width: "fit-content",
-  padding: "10px",
+  padding: "20px",
   top: 0,
   left: 0,
   right: 0,
@@ -28,6 +28,9 @@ const StyledTypography = styled(Typography)({
   textTransform: "uppercase",
   fontWeight: "500px",
   textAlign: "center",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   "&:hover": {
     transform: "scale(1.1)",
     transition: `transform 300s easeIn `,
