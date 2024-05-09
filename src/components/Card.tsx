@@ -16,7 +16,7 @@ const StyledCardContainer = styled(Box)({
 
 const StyledImgBox = styled(Box)({
   width: "100%",
-  height: 400,
+  height: "400px",
   overflow: "hidden",
   position: "relative",
   ".img1": {

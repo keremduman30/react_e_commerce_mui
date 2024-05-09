@@ -3,7 +3,6 @@ import { styled } from "@mui/system";
 import { CategoryItem } from "../services/fake_data";
 import { Link } from "react-router-dom";
 
-
 export type CategoriesItemProp = {
   item: CategoryItem;
 };
@@ -32,6 +31,8 @@ const StyledTypography = styled(Typography)({
   "&:hover": {
     transform: "scale(1.1)",
     transition: `transform 300s easeIn `,
+    backgroundColor: "#2879fe",
+    color: "white",
   },
 });
 
