@@ -1,12 +1,4 @@
-import {
-  Badge,
-  Box,
-  Button,
-  Select,
-  Stack,
-  Typography,
-  styled,
-} from "@mui/material";
+import { Badge, Box, Select, Stack, Typography, styled } from "@mui/material";
 import { ReactElement, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
@@ -26,9 +18,9 @@ type IconType = {
   id: number;
 };
 const categories: NavType[] = [
-  { link: "#men", name: "Men" },
-  { link: "#women", name: "Women" },
-  { link: "#children", name: "Children" },
+  { link: "/products/men", name: "Men" },
+  { link: "/products/women", name: "Women" },
+  { link: "/products/children", name: "Children" },
 ];
 const navlink: NavType[] = [
   { link: "/", name: "HomePage" },

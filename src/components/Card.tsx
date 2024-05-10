@@ -49,12 +49,12 @@ const StyledTypography = styled(Typography)({
 });
 const Card = ({ item }: CardProp) => {
   return (
-    <Link to={`/product/${item.id}`}>
+    <Link to={`/product/${item._id}`}>
       <StyledCardContainer>
         <StyledImgBox>
           {item.isNew && <StyledTypography>New Season</StyledTypography>}
           <StyledImg src={item.img} alt="" className="img1" />
-          <StyledImg src={item.img1} alt="" className="img2" />
+          {item.img1 && <StyledImg src={item.img1} alt="" className="img2" />}
         </StyledImgBox>
         <Typography variant="h6" fontSize={16} fontWeight={400}>
           {item.title}
