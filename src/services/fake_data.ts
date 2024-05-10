@@ -1,6 +1,8 @@
 export type CardItem = {
-  id: number;
+  id?: number;
+  _id?: string;
   img1?: string;
+  desc?: string;
   img: string;
   title: string;
   isNew?: boolean;
@@ -107,4 +109,15 @@ const categoriesList: CategoryItem[] = [
   },
 ];
 
-export { featuresdata, productData, categoriesList };
+const productsBgCategoryImg: string[] = [
+  "https://images.unsplash.com/photo-1489370603040-dc6c28a1d37a?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://plus.unsplash.com/premium_photo-1658506871173-7498f5371ed1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1555529771-122e5d9f2341?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+];
+const imgList: string[] = [
+  "https://images.pexels.com/photos/1549200/pexels-photo-1549200.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  "https://images.pexels.com/photos/949670/pexels-photo-949670.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  "https://images.pexels.com/photos/837140/pexels-photo-837140.jpeg?auto=compress&cs=tinysrgb&w=1600",
+];
+
+export { featuresdata, productData, categoriesList, productsBgCategoryImg ,imgList};

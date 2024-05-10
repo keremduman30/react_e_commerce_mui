@@ -1,12 +1,23 @@
 import { Box, Typography, Stack } from "@mui/material";
-import { featuresdata } from "../services/fake_data";
 import Card from "./Card";
+import { CardItem } from "../services/fake_data";
+import useFetch from "../hooks/useFetch";
+import { useEffect, useState } from "react";
 
 type FeaturedProps = {
   title: string;
 };
 const FeaturedProducts = ({ title }: FeaturedProps) => {
-  const data = featuresdata;
+  const { data } = useFetch<CardItem[]>("/products");
+  const [filterFeaturedList, setfilterFeaturedList] = useState<CardItem[]>([]);
+  useEffect(() => {
+    if (data) {
+      setfilterFeaturedList(
+        data.filter((e) => (title === "featured" ? !e.isNew : e.isNew))
+      );
+    }
+  }, [data, title]);
+
   return (
     <Box sx={{ margin: "100px 200px" }}>
       <Stack
@@ -38,8 +49,8 @@ const FeaturedProducts = ({ title }: FeaturedProps) => {
           gap: "50px",
         }}
       >
-        {data.map((card) => (
-          <Card key={card.id} item={card} />
+        {filterFeaturedList.map((card) => (
+          <Card key={card._id} item={card} />
         ))}
       </Box>
     </Box>
@@ -47,3 +58,28 @@ const FeaturedProducts = ({ title }: FeaturedProps) => {
 };
 
 export default FeaturedProducts;
+/* 
+  /*  
+  const [featuredData, setfeaturedData] = useState<CardItem[]>([]);
+  without core fetch api
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await baseApi.get("/products");
+        if (res.data) {
+          setfeaturedData(res.data);
+        }
+      } catch (error) {
+        console.log("erorr " + error);
+      }
+    };
+    fetchData();
+  }, []); */
+
+/*  const featuredData =
+    title === "featured"
+      ? featuredData.filter((e) => e.isNew)
+      : featuredData.filter((e) => !e.isNew); 
+
+
+*/

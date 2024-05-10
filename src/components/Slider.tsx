@@ -2,11 +2,8 @@ import { Box, Stack, styled } from "@mui/material";
 import { useState } from "react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-const imgList: string[] = [
-  "https://images.pexels.com/photos/1549200/pexels-photo-1549200.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  "https://images.pexels.com/photos/949670/pexels-photo-949670.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  "https://images.pexels.com/photos/837140/pexels-photo-837140.jpeg?auto=compress&cs=tinysrgb&w=1600",
-];
+import { imgList } from "../services/fake_data";
+const imgSliderList = imgList;
 
 const BoxStyled = styled(Box)({
   height: "50px",
@@ -43,7 +40,7 @@ const SliderHome = () => {
           transition: "all 1s ease",
         }}
       >
-        {imgList.map((e) => (
+        {imgSliderList.map((e) => (
           <img
             src={e}
             key={e}

@@ -47,7 +47,7 @@ export const CategoriesItem = ({ item }: CategoriesItemProp) => {
         alt=""
         style={{ objectFit: "cover", height: "100%", width: "100%" }}
       />
-      <Link to={"#home"}>
+      <Link to={`products/${item.btnText.toLowerCase()}`}>
         <StyledTypography variant="body2">{item.btnText}</StyledTypography>
       </Link>
     </StyledBox>
