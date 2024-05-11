@@ -13,7 +13,7 @@ import { useParams } from "react-router-dom";
 import { CardItem } from "../services/fake_data";
 import useFetch from "../hooks/useFetch";
 import { useAppDispatch } from "../store/store";
-import { addProduct } from "../store/slice/basketSlice";
+import { addProduct, basketLocale } from "../store/slice/basketSlice";
 
 const StyledButton = styled(Button)({
   boxShadow: "none",
@@ -33,6 +33,8 @@ const Product = () => {
   const id = useParams().id;
   const [selectImg, setselectImg] = useState<string | null>(null);
   const { data, eror } = useFetch<CardItem>(`products/find/${id}`);
+  const [quantity, setQuantity] = useState<number>(1);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (data) {
@@ -40,9 +42,11 @@ const Product = () => {
     }
   }, [data]);
 
-  const [quantity, setQuantity] = useState<number>(1);
   //reduxtoolkit
-  const dispatch = useAppDispatch();
+  const addProductItem = (data: CardItem) => {
+    dispatch(addProduct({ quantity, cardItem: data }));
+    dispatch(basketLocale({}));
+  };
 
   return (
     <Box sx={{ padding: "10px 50px" }}>
@@ -144,7 +148,7 @@ const Product = () => {
                   color: "white",
                 },
               }}
-              onClick={() => dispatch(addProduct({ quantity, cardItem: data }))}
+              onClick={() => addProductItem(data)}
             >
               Add to Card
             </Button>
