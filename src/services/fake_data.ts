@@ -8,13 +8,14 @@ export type CardItem = {
   isNew?: boolean;
   oldPrice: number;
   price: number;
+  quantity: number;
 };
 export type CategoryItem = {
   img: string;
   btnText: string;
 };
 
-const featuresdata: CardItem[] = [
+/* const featuresdata: CardItem[] = [
   {
     id: 1,
     img1: "https://images.pexels.com/photos/1972115/pexels-photo-1972115.jpeg?auto-compress&cs=tinysrgb&w=1600",
@@ -80,7 +81,7 @@ const productData: CardItem[] = [
     oldPrice: 19,
     price: 12,
   },
-];
+]; */
 
 const categoriesList: CategoryItem[] = [
   {
@@ -120,4 +121,4 @@ const imgList: string[] = [
   "https://images.pexels.com/photos/837140/pexels-photo-837140.jpeg?auto=compress&cs=tinysrgb&w=1600",
 ];
 
-export { featuresdata, productData, categoriesList, productsBgCategoryImg ,imgList};
+export { categoriesList, productsBgCategoryImg, imgList };

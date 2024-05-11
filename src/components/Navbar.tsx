@@ -7,6 +7,7 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MenuItem from "@mui/material/MenuItem";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"; // İstediğiniz simgeyi burada kullanabilirsiniz
 import BasketCard from "./BasketCard";
+import { useAppSelector } from "../store/store";
 
 type NavType = {
   link: string;
@@ -61,6 +62,10 @@ const Navbar = () => {
   const handleClose = (e) => {
     setLanguage(e.target.value);
   };
+
+  //redux toolkit
+  const { quantity } = useAppSelector((state) => state.basket);
+
   return (
     <Box sx={{ height: "80px", margin: "0px" }}>
       <Stack
@@ -153,7 +158,7 @@ const Navbar = () => {
               </Box>
             ) : (
               <Badge
-                badgeContent={4}
+                badgeContent={quantity}
                 color="primary"
                 onClick={() => setopenCard(!openCard)}
                 sx={{ cursor: "pointer" }}
