@@ -7,6 +7,9 @@ import Footer from "./components/Footer";
 import { Stack, ThemeProvider } from "@mui/material";
 import Home from "./pages/Home";
 import { theme } from "./theme/theme";
+import { useAppDispatch } from "./store/store";
+import { useEffect } from "react";
+import { basketLocale } from "./store/slice/basketSlice";
 
 const Layout = () => {
   return (
@@ -40,6 +43,10 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(basketLocale({ getInitial: true }));
+  }, [dispatch]);
   return (
     <>
       <ThemeProvider theme={theme}>

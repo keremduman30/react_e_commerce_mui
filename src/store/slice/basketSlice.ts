@@ -51,10 +51,28 @@ export const basketSlice = createSlice({
         state.quantity = 0;
       }
     },
+    basketLocale: (state, action: PayloadAction<{ getInitial?: boolean }>) => {
+      if (action.payload.getInitial != null) {
+        const getLocaleBasketData = localStorage.getItem("basket");
+        if (getLocaleBasketData) {
+          const getSaveToData: InitialType = JSON.parse(getLocaleBasketData);
+          state.productList = getSaveToData.productList;
+          state.quantity = getSaveToData.quantity;
+          state.total = getSaveToData.total;
+        }
+      } else {
+        const saveToBasketData: InitialType = {
+          total: state.total,
+          productList: state.productList,
+          quantity: state.quantity,
+        };
+        localStorage.setItem("basket", JSON.stringify(saveToBasketData));
+      }
+    },
   },
 });
 
-export const { removeProduct, addProduct, removeAllProduct } =
+export const { removeProduct, addProduct, removeAllProduct, basketLocale } =
   basketSlice.actions;
 export default basketSlice.reducer;
 /* 

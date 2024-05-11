@@ -11,7 +11,12 @@ import {
 import { Delete } from "@mui/icons-material";
 import { styled } from "@mui/system";
 import { useAppDispatch, useAppSelector } from "../store/store";
-import { removeAllProduct, removeProduct } from "../store/slice/basketSlice";
+import {
+  basketLocale,
+  removeAllProduct,
+  removeProduct,
+} from "../store/slice/basketSlice";
+import { CardItem } from "../services/fake_data";
 const StyledStackBasKetCard = styled(Box)({
   position: "absolute",
   top: "80px",
@@ -25,6 +30,15 @@ const BasketCard = () => {
   const { productList, total } = useAppSelector((store) => store.basket);
   const dispatch = useAppDispatch();
   // const data = featuresdata;
+  const removeItem = (data: CardItem) => {
+    dispatch(removeProduct({ cardItem: data }));
+    dispatch(basketLocale({}));
+  };
+  const removeAll = () => {
+    dispatch(removeAllProduct());
+    dispatch(basketLocale({}));
+  };
+
   return (
     <StyledStackBasKetCard>
       <Card sx={{ padding: "20px" }}>
@@ -85,7 +99,7 @@ const BasketCard = () => {
                           backgroundColor: "transparent",
                         },
                       }}
-                      onClick={() => dispatch(removeProduct({ cardItem: e }))}
+                      onClick={() => removeItem(e)}
                     >
                       <Delete />
                     </IconButton>
@@ -126,7 +140,7 @@ const BasketCard = () => {
                 <Button
                   variant="text"
                   sx={{ color: "red" }}
-                  onClick={() => dispatch(removeAllProduct())}
+                  onClick={removeAll}
                 >
                   Reset
                 </Button>
