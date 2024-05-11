@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Stack, ThemeProvider } from "@mui/material";
 import Home from "./pages/Home";
-import { theme } from "./actions/theme";
+import { theme } from "./theme/theme";
 
 const Layout = () => {
   return (
