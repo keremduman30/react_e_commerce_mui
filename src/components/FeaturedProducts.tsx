@@ -1,14 +1,14 @@
 import { Box, Typography, Stack } from "@mui/material";
 import Card from "./Card";
 import { CardItem } from "../services/fake_data";
-import useFetch from "../hooks/useFetch";
 import { useEffect, useState } from "react";
+import { useFetchFeaturesProductsQuery } from "../services/products_api";
 
 type FeaturedProps = {
   title: string;
 };
 const FeaturedProducts = ({ title }: FeaturedProps) => {
-  const { data } = useFetch<CardItem[]>("/products");
+  const { data } = useFetchFeaturesProductsQuery("");
   const [filterFeaturedList, setfilterFeaturedList] = useState<CardItem[]>([]);
   useEffect(() => {
     if (data) {

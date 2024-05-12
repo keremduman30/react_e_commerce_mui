@@ -11,9 +11,9 @@ import { useEffect, useState } from "react";
 import { Balance, FavoriteBorderOutlined } from "@mui/icons-material";
 import { useParams } from "react-router-dom";
 import { CardItem } from "../services/fake_data";
-import useFetch from "../hooks/useFetch";
 import { useAppDispatch } from "../store/store";
 import { addProduct, basketLocale } from "../store/slice/basketSlice";
+import { useFethcFindProductQuery } from "../services/products_api";
 
 const StyledButton = styled(Button)({
   boxShadow: "none",
@@ -32,7 +32,8 @@ const StyledButton = styled(Button)({
 const Product = () => {
   const id = useParams().id;
   const [selectImg, setselectImg] = useState<string | null>(null);
-  const { data, eror } = useFetch<CardItem>(`products/find/${id}`);
+  const { data, error } = useFethcFindProductQuery(id ?? "");
+
   const [quantity, setQuantity] = useState<number>(1);
   const dispatch = useAppDispatch();
 
@@ -196,7 +197,7 @@ const Product = () => {
             gap: "10px",
           }}
         >
-          {eror ? (
+          {error ? (
             <>
               <Typography>Please try again later.</Typography>
             </>
@@ -213,20 +214,3 @@ const Product = () => {
 };
 
 export default Product;
-/* 
-
-  /*  //without core request 
-  
-  useEffect(() => {
-    console.log(id);
-
-    const singleProduct = async () => {
-      const res = await baseApi.get(`/products/find/${id}`);
-      if (res.data) {
-        setSingleProduct(res.data);
-        setselectImg(res.data["img"]);
-      }
-    };
-    singleProduct();
-  }, [id]); 
-  */
