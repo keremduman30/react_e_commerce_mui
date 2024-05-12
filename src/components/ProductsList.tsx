@@ -1,7 +1,6 @@
 import { Stack, Typography } from "@mui/material";
-import { CardItem } from "../services/fake_data";
 import Card from "./Card";
-import useFetch from "../hooks/useFetch";
+import { useFetchFilterProductsQuery } from "../services/products_api";
 
 type props = {
   catId?: string;
@@ -10,9 +9,13 @@ type props = {
   categories: string[];
 };
 const ProductsList = ({ catId, maxPrice, sort, categories }: props) => {
-  const { data } = useFetch<CardItem[]>(
-    `/products?gender=${catId}&price=${maxPrice}&sort=${sort}&category=${categories}`
-  );
+  const { data } = useFetchFilterProductsQuery({
+    categories,
+    catId,
+    maxPrice,
+    sort,
+  });
+
   const isWrap = data && data?.length > 2;
   return (
     <Stack

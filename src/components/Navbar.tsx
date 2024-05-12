@@ -1,4 +1,12 @@
-import { Badge, Box, Select, Stack, Typography, styled } from "@mui/material";
+import {
+  Badge,
+  Box,
+  Select,
+  SelectChangeEvent,
+  Stack,
+  Typography,
+  styled,
+} from "@mui/material";
 import { ReactElement, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
@@ -59,7 +67,7 @@ const Icons = styled(Box)(({ theme }) => ({
 const Navbar = () => {
   const [openCard, setopenCard] = useState<boolean>(false);
   const [selectLang, setLanguage] = useState("usd");
-  const handleClose = (e) => {
+  const handleClose = (e: SelectChangeEvent) => {
     setLanguage(e.target.value);
   };
 
@@ -142,7 +150,7 @@ const Navbar = () => {
 
         <Stack direction={"row"} gap={2}>
           {navlink.map((e) => (
-            <a href={e.link}>
+            <a href={e.link} key={crypto.randomUUID()}>
               <StyledTypography key={e.link}>{e.name}</StyledTypography>
             </a>
           ))}
@@ -160,6 +168,7 @@ const Navbar = () => {
               <Badge
                 badgeContent={quantity}
                 color="primary"
+                key={crypto.randomUUID()}
                 onClick={() => setopenCard(!openCard)}
                 sx={{ cursor: "pointer" }}
               >
