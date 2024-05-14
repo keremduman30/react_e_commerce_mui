@@ -19,12 +19,24 @@ const FeaturedProducts = ({ title }: FeaturedProps) => {
   }, [data, title]);
 
   return (
-    <Box sx={{ margin: "100px 200px" }}>
+    <Box
+      sx={{
+        margin: {
+          xs: "10px 20px",
+          md: "100px",
+        },
+      }}
+    >
       <Stack
-        direction="row"
+        // direction="row"
         justifyContent={"space-between"}
         alignItems={"center"}
-        sx={{ mb: "50px" }}
+        sx={{
+          mb: "50px",
+          flexDirection: { xs: "column", md: "row" },
+          gap: { xs: "20px" },
+          fontSize: { xs: "12px" },
+        }}
       >
         <Typography
           variant="h4"
@@ -33,7 +45,10 @@ const FeaturedProducts = ({ title }: FeaturedProps) => {
         >
           {title} products
         </Typography>
-        <Typography variant="body1" sx={{ flex: "3", color: "gray" }}>
+        <Typography
+          variant="body1"
+          sx={{ flex: "3", color: "gray", textAlign: { xs: "center" } }}
+        >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
           unde quae corrupti esse officiis aliquid optio neque aut cupiditate
           debitis ipsa nobis tempore saepe error quidem beatae nihil, totam odio
@@ -45,6 +60,7 @@ const FeaturedProducts = ({ title }: FeaturedProps) => {
         sx={{
           display: "flex",
           flexDirection: "row",
+          flexWrap: "wrap",
           justifyContent: "center",
           gap: "50px",
         }}
@@ -58,28 +74,3 @@ const FeaturedProducts = ({ title }: FeaturedProps) => {
 };
 
 export default FeaturedProducts;
-/* 
-  /*  
-  const [featuredData, setfeaturedData] = useState<CardItem[]>([]);
-  without core fetch api
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await baseApi.get("/products");
-        if (res.data) {
-          setfeaturedData(res.data);
-        }
-      } catch (error) {
-        console.log("erorr " + error);
-      }
-    };
-    fetchData();
-  }, []); */
-
-/*  const featuredData =
-    title === "featured"
-      ? featuredData.filter((e) => e.isNew)
-      : featuredData.filter((e) => !e.isNew); 
-
-
-*/

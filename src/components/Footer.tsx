@@ -1,33 +1,7 @@
 import { Box, Grid, Stack, Typography, styled } from "@mui/material";
 import { Link } from "react-router-dom";
+import { footerLinks } from "../services/fake_data";
 
-type NavTypeFooter = {
-  title: string;
-  links?: string[];
-};
-
-const footerLinks: NavTypeFooter[] = [
-  {
-    title: "Categories",
-    links: ["Women", "Men", "Shoes", "Accessories", "New Arrivals"],
-  },
-  {
-    title: "Links",
-    links: ["FAQ", "Pages", "Stores", "Compare", "Cookies"],
-  },
-  {
-    title: "About",
-    links: [
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi possimus sunt saepe autem rerum praesentium quod excepturi! Earum fugit, quae distinctio ab explicabo nesciunt animi, nisi recusandae optio, minima atque.",
-    ],
-  },
-  {
-    title: "Contack",
-    links: [
-      "  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi possimus sunt saepe autem rerum praesentium quod excepturi! Earum fugit, quae distinctio ab explicabo nesciunt animi, nisi recusandae optio, minima atque.",
-    ],
-  },
-];
 const StyledTypography = styled(Typography)({
   cursor: "pointer",
   color: "gray",
@@ -40,8 +14,15 @@ const StyledTypography = styled(Typography)({
 
 const Footer = () => {
   return (
-    <Box sx={{ margin: "100px 180px 0px 200px" }}>
-      <Grid container spacing={5}>
+    <Box
+      sx={{
+        margin: {
+          xs: "20px",
+          md: "100px 180px 0px 200px",
+        },
+      }}
+    >
+      <Grid container spacing={5} sx={{}}>
         {footerLinks.map((e, i) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={e.title}>
             <Typography
@@ -81,15 +62,47 @@ const Footer = () => {
         alignItems={"center"}
         mt={2}
       >
-        <Stack direction={"row"} alignItems={"center"}>
-          <Typography color={"#2879fe"} fontWeight={"bold"} fontSize={24}>
-            DumanStore
-          </Typography>
-          <Typography ml={2} fontSize={12} color={"gray"}>
-            © Copyright 2023.All Rights Reserved
-          </Typography>
+        <Stack
+          direction={"row"}
+          alignItems={"center"}
+          sx={{
+            flexDirection: {
+              xs: "column",
+              lg: "row",
+            },
+            width: "100%",
+          }}
+        >
+          <Stack
+            direction={"row"}
+            alignItems={"center"}
+            // justifyContent={"space-between"}
+            sx={{
+              marginTop: "20px",
+              width: {
+                xs: "100%",
+              },
+              justifyContent: {
+                xs: "space-between",
+                sm: "center",
+                lg: "start",
+              },
+            }}
+          >
+            <Typography color={"#2879fe"} fontWeight={"bold"} fontSize={24}>
+              DumanStore
+            </Typography>
+            <Typography ml={2} fontSize={12} color={"gray"}>
+              © Copyright 2023.All Rights Reserved
+            </Typography>
+          </Stack>
+          <img
+            src="/img/payment.png"
+            alt=""
+            height={50}
+            style={{ width: "80%" }}
+          />
         </Stack>
-        <img src="/img/payment.png" alt="" height={50} />
       </Stack>
     </Box>
   );

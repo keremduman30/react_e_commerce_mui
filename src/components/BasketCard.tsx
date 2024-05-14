@@ -19,14 +19,22 @@ import {
 import { CardItem } from "../services/fake_data";
 import { loadStripe } from "@stripe/stripe-js";
 import { useFetchPaymentMutation } from "../services/products_api";
-const StyledStackBasKetCard = styled(Box)({
+
+const StyledStackBasKetCard = styled(Box)(({ theme }) => ({
   position: "absolute",
   top: "80px",
   right: "20px",
   zIndex: 999,
   minWidth: "350px",
   backgroundColor: "white",
-});
+  [theme.breakpoints.down("sm")]: {
+    minWidth: "300px",
+    top: "80px",
+    right: "10px",
+    left: "10px",
+    margin: "auto",
+  },
+}));
 
 const BasketCard = () => {
   const { productList, total } = useAppSelector((store) => store.basket);
@@ -167,8 +175,13 @@ const BasketCard = () => {
               </Stack>
             </Stack>
           ) : (
-            <Typography textAlign={"center"} variant="h6" color={"gray"}>
-              Henüz ürün eklemediniz
+            <Typography
+              textAlign={"center"}
+              variant="h6"
+              color={"gray"}
+              fontSize={16}
+            >
+              You haven't added any products yet
             </Typography>
           )}
         </Stack>

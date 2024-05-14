@@ -16,6 +16,8 @@ import MenuItem from "@mui/material/MenuItem";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"; // İstediğiniz simgeyi burada kullanabilirsiniz
 import BasketCard from "./BasketCard";
 import { useAppSelector } from "../store/store";
+import { Menu } from "@mui/icons-material";
+import SmallMenu from "./SmallMenu";
 
 type NavType = {
   link: string;
@@ -55,6 +57,7 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
 const Navbar = () => {
   const [openCard, setOpenCard] = useState<boolean>(false);
   const [selectLang, setLanguage] = useState("usd");
+  const [openSmallMenu, setOpenSmallMenu] = useState<boolean>(false);
   const handleClose = (e: SelectChangeEvent) => {
     setLanguage(e.target.value);
   };
@@ -68,16 +71,20 @@ const Navbar = () => {
         direction={"row"}
         justifyContent={"space-between"}
         alignItems={"center"}
-        sx={{ padding: "10px 30px" }}
+        sx={{ padding: "10px " }}
       >
-        <Stack direction={"row"} gap={2}>
+        <Stack
+          direction={"row"}
+          gap={2}
+          sx={{ display: { xs: "none", lg: "flex" } }}
+        >
           <Select
             value={selectLang}
             disableUnderline
             autoWidth
             onChange={handleClose}
             variant="standard"
-            IconComponent={ExpandMoreIcon} 
+            IconComponent={ExpandMoreIcon}
             sx={{
               height: "30px",
               gap: 5,
@@ -133,40 +140,72 @@ const Navbar = () => {
           </Box>
         </Stack>
         <a href={"/"}>
-          <StyledTypography variant="h5">DumanStore</StyledTypography>
+          <StyledTypography
+            variant="h5"
+            sx={{ fontWeight: { xs: "500", lg: "400" } }}
+          >
+            DumanStore
+          </StyledTypography>
         </a>
 
         <Stack direction={"row"} gap={2}>
-          {navlink.map((e) => (
-            <a href={e.link} key={crypto.randomUUID()}>
-              <StyledTypography key={e.link}>{e.name}</StyledTypography>
-            </a>
-          ))}
-          {iconList.map((e, i) =>
-            i < 3 ? (
-              <Box
-                sx={{
-                  cursor: "pointer",
-                }}
-                key={e.id}
-              >
-                {e.icon}
-              </Box>
-            ) : (
-              <Badge
-                badgeContent={quantity}
-                color="primary"
-                key={crypto.randomUUID()}
-                onClick={() => setOpenCard(!openCard)}
-                sx={{ cursor: "pointer" }}
-              >
-                {e.icon}
-              </Badge>
-            )
-          )}
+          <Stack
+            direction={"row"}
+            gap={2}
+            sx={{ display: { xs: "none", md: "flex" } }}
+          >
+            {navlink.map((e) => (
+              <a href={e.link} key={crypto.randomUUID()}>
+                <StyledTypography key={e.link}>{e.name}</StyledTypography>
+              </a>
+            ))}
+            {iconList.map((e, i) =>
+              i < 3 ? (
+                <Box
+                  sx={{
+                    cursor: "pointer",
+                  }}
+                  key={e.id}
+                >
+                  {e.icon}
+                </Box>
+              ) : (
+                <Badge
+                  badgeContent={quantity}
+                  color="primary"
+                  key={crypto.randomUUID()}
+                  onClick={() => setOpenCard(!openCard)}
+                  sx={{ cursor: "pointer" }}
+                >
+                  {e.icon}
+                </Badge>
+              )
+            )}
+          </Stack>
+          <Stack direction={"row"} sx={{ display: { md: "none" } }} gap={3}>
+            <Badge
+              badgeContent={quantity}
+              color="primary"
+              key={crypto.randomUUID()}
+              onClick={() => {
+                setOpenCard(!openCard);
+                setOpenSmallMenu(false);
+              }}
+              sx={{ cursor: "pointer" }}
+            >
+              {<ShoppingCartOutlinedIcon />}
+            </Badge>
+            <Menu
+              onClick={() => {
+                setOpenSmallMenu(!openSmallMenu);
+                setOpenCard(false);
+              }}
+            />
+          </Stack>
         </Stack>
       </Stack>
       {openCard && <BasketCard />}
+      {openSmallMenu && <SmallMenu />}
     </Box>
   );
 };

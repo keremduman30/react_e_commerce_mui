@@ -28,6 +28,10 @@ const SliderHome = () => {
         width: "100vw",
         position: "relative",
         overflow: "hidden",
+        display: {
+          xs: "none",
+          md: "flex",
+        },
       }}
     >
       <Stack
@@ -44,7 +48,11 @@ const SliderHome = () => {
           <img
             src={e}
             key={e}
-            style={{ width: "100vw", height: "100%", objectFit: "cover" }}
+            style={{
+              width: "100vw",
+              height: "100%",
+              objectFit: "cover",
+            }}
           />
         ))}
       </Stack>

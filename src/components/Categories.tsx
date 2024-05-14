@@ -25,7 +25,12 @@ const Categories = () => {
   return (
     <Stack
       direction={"row"}
-      sx={{ height: "80vh", gap: "10px", margin: "10px" }}
+      sx={{
+        height: "80vh",
+        gap: "10px",
+        margin: "10px",
+        display: { xs: "none", md: "flex" },
+      }}
     >
       <StyledBoxLeft>
         <Box sx={{ flex: "1" }}>

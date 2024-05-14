@@ -121,4 +121,32 @@ const imgList: string[] = [
   "https://images.pexels.com/photos/837140/pexels-photo-837140.jpeg?auto=compress&cs=tinysrgb&w=1600",
 ];
 
+type NavTypeFooter = {
+  title: string;
+  links?: string[];
+};
+
+export const footerLinks: NavTypeFooter[] = [
+  {
+    title: "Categories",
+    links: ["Women", "Men", "Shoes", "Accessories", "New Arrivals"],
+  },
+  {
+    title: "Links",
+    links: ["FAQ", "Pages", "Stores", "Compare", "Cookies"],
+  },
+  {
+    title: "About",
+    links: [
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi possimus sunt saepe autem rerum praesentium quod excepturi! Earum fugit, quae distinctio ab explicabo nesciunt animi, nisi recusandae optio, minima atque.",
+    ],
+  },
+  {
+    title: "Contack",
+    links: [
+      "  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi possimus sunt saepe autem rerum praesentium quod excepturi! Earum fugit, quae distinctio ab explicabo nesciunt animi, nisi recusandae optio, minima atque.",
+    ],
+  },
+];
+
 export { categoriesList, productsBgCategoryImg, imgList };
