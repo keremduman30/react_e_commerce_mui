@@ -17,6 +17,8 @@ import {
   removeProduct,
 } from "../store/slice/basketSlice";
 import { CardItem } from "../services/fake_data";
+import { loadStripe } from "@stripe/stripe-js";
+import { useFetchPaymentMutation } from "../services/products_api";
 const StyledStackBasKetCard = styled(Box)({
   position: "absolute",
   top: "80px",
@@ -29,7 +31,6 @@ const StyledStackBasKetCard = styled(Box)({
 const BasketCard = () => {
   const { productList, total } = useAppSelector((store) => store.basket);
   const dispatch = useAppDispatch();
-  // const data = featuresdata;
   const removeItem = (data: CardItem) => {
     dispatch(removeProduct({ cardItem: data }));
     dispatch(basketLocale({}));
@@ -37,6 +38,24 @@ const BasketCard = () => {
   const removeAll = () => {
     dispatch(removeAllProduct());
     dispatch(basketLocale({}));
+  };
+
+  //stripe
+  const [fetchPayment] = useFetchPaymentMutation();
+  const handlePayment = async () => {
+    const stripe = await loadStripe(`${import.meta.env.VITE_STRIPE_KEY}`);
+    try {
+      const data = await fetchPayment({
+        products: productList,
+        amount: total,
+      }).unwrap();
+
+      if (data.id) {
+        await stripe?.redirectToCheckout({ sessionId: data.id });
+      }
+    } catch (error) {
+      console.log("client eror" + error);
+    }
   };
 
   return (
@@ -56,7 +75,7 @@ const BasketCard = () => {
             <Stack gap={2}>
               {productList.map((e) => (
                 <CardHeader
-                  key={e.id}
+                  key={crypto.randomUUID()}
                   sx={{ padding: "0" }}
                   avatar={
                     <img
@@ -134,6 +153,7 @@ const BasketCard = () => {
                       color: "white",
                     },
                   }}
+                  onClick={handlePayment}
                 >
                   Process to checkout
                 </Button>

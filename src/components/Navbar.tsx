@@ -52,20 +52,8 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
   },
 }));
 
-/* 
-const Icons = styled(Box)(({ theme }) => ({
-  display: "none",
-  alignItems: "center",
-  gap: "25px",
-  [theme.breakpoints.up("sm")]: {
-    display: "flex",
-  },
-}));
-
-*/
-
 const Navbar = () => {
-  const [openCard, setopenCard] = useState<boolean>(false);
+  const [openCard, setOpenCard] = useState<boolean>(false);
   const [selectLang, setLanguage] = useState("usd");
   const handleClose = (e: SelectChangeEvent) => {
     setLanguage(e.target.value);
@@ -89,7 +77,7 @@ const Navbar = () => {
             autoWidth
             onChange={handleClose}
             variant="standard"
-            IconComponent={ExpandMoreIcon} // Simgeyi burada belirtin
+            IconComponent={ExpandMoreIcon} 
             sx={{
               height: "30px",
               gap: 5,
@@ -169,7 +157,7 @@ const Navbar = () => {
                 badgeContent={quantity}
                 color="primary"
                 key={crypto.randomUUID()}
-                onClick={() => setopenCard(!openCard)}
+                onClick={() => setOpenCard(!openCard)}
                 sx={{ cursor: "pointer" }}
               >
                 {e.icon}
@@ -184,6 +172,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-/* 
-
-*/

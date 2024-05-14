@@ -33,13 +33,13 @@ const StyleSlider = styled(Slider)(() => ({
 const Products = () => {
   const id = useParams().id;
   const backgroundCategoryImg = useMemo(() => productsBgCategoryImg, []);
-  const [backgroundImg, setbackgrounImg] = useState(backgroundCategoryImg[2]);
-  const [maxPrice, setmaxPrice] = useState<number | number[]>(5);
+  const [backgroundImg, setBackgrounImg] = useState(backgroundCategoryImg[2]);
+  const [maxPrice, setMaxPrice] = useState<number | number[]>(5);
   const [sort, setSort] = useState<number>(1);
-  const [categories, setcategories] = useState<string[]>([]);
+  const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {
-    setbackgrounImg(
+    setBackgrounImg(
       id === "men"
         ? backgroundCategoryImg[0]
         : id === "women"
@@ -49,16 +49,16 @@ const Products = () => {
   }, [backgroundImg, backgroundCategoryImg, id]);
 
   const handleChange = (_event: Event, value: number | number[]) => {
-    setmaxPrice(value);
+    setMaxPrice(value);
   };
   const handleCategoryCheck = (
     event: ChangeEvent<HTMLInputElement>,
     checked: boolean
   ) => {
     if (checked) {
-      setcategories((prev) => [...prev, event.target.value]);
+      setCategories((prev) => [...prev, event.target.value]);
     } else {
-      setcategories((prev) => prev.filter((e) => e != event.target.value));
+      setCategories((prev) => prev.filter((e) => e != event.target.value));
     }
   };
 

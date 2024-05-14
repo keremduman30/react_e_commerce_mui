@@ -31,7 +31,7 @@ const StyledButton = styled(Button)({
 
 const Product = () => {
   const id = useParams().id;
-  const [selectImg, setselectImg] = useState<string | null>(null);
+  const [selectImg, setSelectImg] = useState<string | null>(null);
   const { data, error } = useFethcFindProductQuery(id ?? "");
 
   const [quantity, setQuantity] = useState<number>(1);
@@ -39,7 +39,7 @@ const Product = () => {
 
   useEffect(() => {
     if (data) {
-      setselectImg(data.img);
+      setSelectImg(data.img);
     }
   }, [data]);
 
@@ -57,7 +57,7 @@ const Product = () => {
             <Stack sx={{ flex: "1", gap: "10px" }}>
               <img
                 src={data.img}
-                onClick={() => setselectImg(data.img)}
+                onClick={() => setSelectImg(data.img)}
                 style={{
                   height: "150px",
                   width: "100%",
@@ -68,7 +68,7 @@ const Product = () => {
               {data.img1 && (
                 <img
                   src={data.img1}
-                  onClick={() => setselectImg(data.img1!)}
+                  onClick={() => setSelectImg(data.img1!)}
                   style={{
                     height: "150px",
                     width: "100%",
