@@ -9,10 +9,10 @@ type FeaturedProps = {
 };
 const FeaturedProducts = ({ title }: FeaturedProps) => {
   const { data } = useFetchFeaturesProductsQuery("");
-  const [filterFeaturedList, setfilterFeaturedList] = useState<CardItem[]>([]);
+  const [filterFeaturedList, setFilterFeaturedList] = useState<CardItem[]>([]);
   useEffect(() => {
     if (data) {
-      setfilterFeaturedList(
+      setFilterFeaturedList(
         data.filter((e) => (title === "featured" ? !e.isNew : e.isNew))
       );
     }

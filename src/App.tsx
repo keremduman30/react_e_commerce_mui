@@ -47,6 +47,7 @@ function App() {
   useEffect(() => {
     dispatch(basketLocale({ getInitial: true }));
   }, [dispatch]);
+
   return (
     <>
       <ThemeProvider theme={theme}>
