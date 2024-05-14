@@ -43,9 +43,21 @@ const Contact = () => {
       <Stack
         direction={"row"}
         sx={{
-          width: "50%",
+          width: {
+            xs: "100%",
+            md: "80%",
+            xl: "50%",
+          },
           justifyContent: "space-between",
           alignItems: "center",
+          flexDirection: {
+            xs: "column",
+            md: "row",
+          },
+          gap: {
+            xs: "30px",
+            md: "0",
+          },
         }}
       >
         <Typography variant="h6" color={"white"}>

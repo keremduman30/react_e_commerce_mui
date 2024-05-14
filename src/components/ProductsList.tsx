@@ -20,14 +20,25 @@ const ProductsList = ({ catId, maxPrice, sort, categories }: props) => {
   return (
     <Stack
       direction={"row"}
-      justifyContent={isWrap ? "space-between" : "space-evenly"}
-      sx={{ flexWrap: isWrap ? "wrap" : "nowrap" }}
+      sx={{
+        flexWrap: isWrap ? "wrap" : "nowrap",
+        justifyContent: {
+          xs: "center",
+          md: `${isWrap ? "space-between" : "space-evenly"}`,
+        },
+        gap: {
+          sm: "50px",
+          md: "0px  ",
+        },
+      }}
     >
       {data?.map((e) => (
-        <Card item={e} key={e.id} />
+        <Card item={e} key={crypto.randomUUID()} />
       ))}
       {data?.length == 0 && (
-        <Typography variant="h4">Böyle bir ürün bulunamadı</Typography>
+        <Typography variant="h4" key={crypto.randomUUID()}>
+          Böyle bir ürün bulunamadı
+        </Typography>
       )}
     </Stack>
   );

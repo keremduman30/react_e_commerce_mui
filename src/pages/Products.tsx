@@ -64,7 +64,15 @@ const Products = () => {
 
   return (
     <Stack direction={"row"} sx={{ padding: "30px 50px" }}>
-      <Box sx={{ flex: "1", position: "sticky", height: "100%", top: "50px" }}>
+      <Box
+        sx={{
+          flex: "1",
+          position: "sticky",
+          height: "100%",
+          top: "50px",
+          display: { xs: "none", md: "block" },
+        }}
+      >
         <Typography variant="h6" fontWeight={400}>
           Product Categories
         </Typography>
@@ -135,16 +143,18 @@ const Products = () => {
         </FormControl>
       </Box>
       <Box sx={{ flex: "3" }}>
-        <img
-          src={backgroundImg}
-          alt=""
-          style={{
-            objectFit: "cover",
-            width: "100%",
-            height: "300px",
-            marginBottom: "50px",
-          }}
-        />
+        <Box sx={{ display: { xs: "none", md: "block" } }}>
+          <img
+            src={backgroundImg}
+            alt=""
+            style={{
+              objectFit: "cover",
+              width: "100%",
+              height: "300px",
+              marginBottom: "50px",
+            }}
+          />
+        </Box>
         <ProductsList
           catId={id}
           maxPrice={maxPrice}

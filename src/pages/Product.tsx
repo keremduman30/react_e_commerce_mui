@@ -28,6 +28,27 @@ const StyledButton = styled(Button)({
     boxShadow: "none",
   },
 });
+const CustomIcnButton = styled(Button)(({ theme }) => ({
+  textTransform: "uppercase",
+  padding: "0",
+  width: "200px",
+  fontSize: "16px",
+
+  [theme.breakpoints.down("sm")]: {
+    "&.MuiButtonBase-root ": {
+      padding: "0px ",
+      width: "150px",
+      fontSize: "12px",
+    },
+  },
+  [theme.breakpoints.down("md")]: {
+    fontSize: "16px",
+    "&.MuiButtonBase-root ": {
+      padding: "0px ",
+      width: "300px",
+    },
+  },
+}));
 
 const Product = () => {
   const id = useParams().id;
@@ -50,11 +71,29 @@ const Product = () => {
   };
 
   return (
-    <Box sx={{ padding: "10px 50px" }}>
+    <Box
+      sx={{
+        padding: {
+          xs: "10px",
+          md: "10px 50px",
+        },
+      }}
+    >
       {data != null ? (
-        <Stack direction={"row"} sx={{ gap: "50px" }}>
+        <Stack
+          direction={"row"}
+          sx={{ gap: "50px", flexDirection: { xs: "column", md: "row" } }}
+        >
           <Stack direction={"row"} sx={{ flex: "1", gap: "10px" }}>
-            <Stack sx={{ flex: "1", gap: "10px" }}>
+            <Stack
+              sx={{
+                flex: {
+                  xs: "2",
+                  lg: "1",
+                },
+                gap: "10px",
+              }}
+            >
               <img
                 src={data.img}
                 onClick={() => setSelectImg(data.img)}
@@ -84,13 +123,18 @@ const Product = () => {
                 alt=""
                 style={{
                   width: "100%",
-                  maxHeight: "600px",
+                  maxHeight: "100%",
                   objectFit: "cover",
                 }}
               />
             </Box>
           </Stack>
-          <Stack sx={{ flex: "1", gap: "15px" }}>
+          <Stack
+            sx={{
+              flex: "1",
+              gap: "15px",
+            }}
+          >
             <Typography variant="h4">{data?.title}</Typography>
             <Typography
               variant="h6"
@@ -155,30 +199,23 @@ const Product = () => {
             </Button>
             <Stack
               direction={"row"}
-              justifyContent={"space-between"}
-              sx={{ width: "60%" }}
+              sx={{
+                justifyContent: "space-between",
+                width: { xs: "100%", lg: "70%" },
+                gap: {
+                  xs: "10px",
+                },
+              }}
             >
-              <Button
+              <CustomIcnButton
                 variant="text"
                 startIcon={<FavoriteBorderOutlined />}
-                sx={{
-                  width: "200px",
-                  textTransform: "uppercase",
-                  padding: "0",
-                }}
               >
                 Add to wish list
-              </Button>
-              <Button
-                variant="text"
-                startIcon={<Balance />}
-                sx={{
-                  width: "200px",
-                  textTransform: "uppercase",
-                }}
-              >
+              </CustomIcnButton>
+              <CustomIcnButton variant="text" startIcon={<Balance />}>
                 Add to Compare
-              </Button>
+              </CustomIcnButton>
             </Stack>
             <hr style={{ width: "100%" }} />
             <Stack sx={{ color: "gray" }} gap={1}>
