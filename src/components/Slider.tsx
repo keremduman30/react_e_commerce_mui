@@ -25,7 +25,7 @@ const SliderHome = () => {
     <Box
       sx={{
         height: "calc(100vh - 80px)",
-        width: "100vw",
+        width: "100%",
         position: "relative",
         overflow: "hidden",
         display: {
