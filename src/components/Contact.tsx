@@ -1,4 +1,11 @@
-import { Box, Stack, TextField, Typography, styled } from "@mui/material";
+import {
+  Box,
+  Button,
+  Stack,
+  TextField,
+  Typography,
+  styled,
+} from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
@@ -15,18 +22,36 @@ const StyledInput = styled("input")({
   },
 }); */
 const StyledTextField = styled(TextField)({
-  backgroundColor: "white",
+  // backgroundColor: "white",
 
-  "&:focus": {
+  "& .MuiOutlinedInput-root": {
+    backgroundColor: "white",
+    borderRadius: "5px 0 0  5px",
     outline: "none",
   },
+  "& .MuiOutlinedInput-notchedOutline": {
+    border: "none",
+  },
 });
-const StyledButton = styled(Box)({
-  padding: "10px",
+const StyledButton = styled(Button)(({ theme }) => ({
+  padding: "0 10px",
   color: "white",
   backgroundColor: "#333",
   borderRadius: "0 5px 5px 0",
-});
+  "&:hover": {
+    backgroundColor: "#333",
+  },
+  [theme.breakpoints.down("sm")]: {
+    padding: "0px",
+    fontSize: "12px",
+  },
+}));
+
+/* 
+MuiOutlinedInput-root
+
+
+*/
 
 const Contact = () => {
   return (
@@ -68,11 +93,12 @@ const Contact = () => {
           <StyledTextField
             size="small"
             variant="outlined"
-            sx={{
-              "& input:focus": {
-                outline: "none",
+            /* sx={{
+              "& fieldset": {
+                border: "none ",
+                borderRadius: "25px", // Sınırı kaldırır
               },
-            }}
+            }} */
           />
           <StyledButton>Join US</StyledButton>
         </Stack>
