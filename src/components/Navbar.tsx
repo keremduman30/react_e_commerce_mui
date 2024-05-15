@@ -17,7 +17,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore"; // İstediğiniz si
 import BasketCard from "./BasketCard";
 import { useAppSelector } from "../store/store";
 import { Menu } from "@mui/icons-material";
-import SmallMenu from "./SmallMenu";
+import DrawerMenu from "./DrawerMenu";
 
 type NavType = {
   link: string;
@@ -57,7 +57,7 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
 const Navbar = () => {
   const [openCard, setOpenCard] = useState<boolean>(false);
   const [selectLang, setLanguage] = useState("usd");
-  const [openSmallMenu, setOpenSmallMenu] = useState<boolean>(false);
+  const [openDrawerMenu, setOpenDrawerMenu] = useState<boolean>(false);
   const handleClose = (e: SelectChangeEvent) => {
     setLanguage(e.target.value);
   };
@@ -189,7 +189,7 @@ const Navbar = () => {
               key={crypto.randomUUID()}
               onClick={() => {
                 setOpenCard(!openCard);
-                setOpenSmallMenu(false);
+                setOpenDrawerMenu(false);
               }}
               sx={{ cursor: "pointer" }}
             >
@@ -197,7 +197,7 @@ const Navbar = () => {
             </Badge>
             <Menu
               onClick={() => {
-                setOpenSmallMenu(!openSmallMenu);
+                setOpenDrawerMenu(!openDrawerMenu);
                 setOpenCard(false);
               }}
             />
@@ -205,7 +205,9 @@ const Navbar = () => {
         </Stack>
       </Stack>
       {openCard && <BasketCard />}
-      {openSmallMenu && <SmallMenu />}
+      {openDrawerMenu && (
+        <DrawerMenu open={openDrawerMenu} setOpen={setOpenDrawerMenu} />
+      )}
     </Box>
   );
 };
