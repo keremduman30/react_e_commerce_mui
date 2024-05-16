@@ -1,30 +1,19 @@
-# React + TypeScript + Vite
+# E-Ticaret Uygulaması
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bu proje, modern bir e-ticaret web uygulaması oluşturmak için React kullanılarak geliştirilmiştir. Uygulama, kullanıcıların ürünleri görüntüleyebileceği, sepete ekleyebileceği ve satın alabileceği bir platform sunar.
 
-Currently, two official plugins are available:
+## Özellikler
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Ürün Listeleme**: Ürünlerin kategorilere göre listelenmesi.
+- **Ürün Detayları**: Her ürün için detaylı bilgi sayfası.
+- **Alışveriş Sepeti**: Kullanıcıların ürünleri sepete ekleyebilmesi, çıkartabilmesi ve güncelleyebilmesi.
+- **Ödeme Sistemi**: Stripe entegrasyonu ile güvenli ödeme işlemleri.
+- **Kullanıcı Yönetimi**: Kullanıcı kayıt ve giriş işlemleri.
 
-## Expanding the ESLint configuration
+## Kullanılan Teknolojiler
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- **React**: Kullanıcı arayüzünü oluşturmak için.
+- **React Router DOM**: Uygulama içinde yönlendirme ve sayfalar arası geçişler için.
+- **MUI (Material-UI)**: Modern ve duyarlı kullanıcı arayüzü bileşenleri için.
+- **Redux Toolkit**: Durum yönetimi için.
+- **Stripe**: Ödeme işlemleri için.
