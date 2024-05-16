@@ -1,19 +1,18 @@
-# E-Ticaret Uygulaması
+# E-Commerce Application
 
-Bu proje, modern bir e-ticaret web uygulaması oluşturmak için React kullanılarak geliştirilmiştir. Uygulama, kullanıcıların ürünleri görüntüleyebileceği, sepete ekleyebileceği ve satın alabileceği bir platform sunar.
+This project is a modern e-commerce web application developed using React. The application provides a platform where users can view products, add them to the cart, and make purchases.
 
-## Özellikler
+## Features
 
-- **Ürün Listeleme**: Ürünlerin kategorilere göre listelenmesi.
-- **Ürün Detayları**: Her ürün için detaylı bilgi sayfası.
-- **Alışveriş Sepeti**: Kullanıcıların ürünleri sepete ekleyebilmesi, çıkartabilmesi ve güncelleyebilmesi.
-- **Ödeme Sistemi**: Stripe entegrasyonu ile güvenli ödeme işlemleri.
-- **Kullanıcı Yönetimi**: Kullanıcı kayıt ve giriş işlemleri.
+- **Product Listing**: Categorized product listing.
+- **Product Details**: Detailed information page for each product.
+- **Shopping Cart**: Users can add, remove, and update products in the cart.
+- **Payment System**: Secure payment transactions with Stripe integration.
 
-## Kullanılan Teknolojiler
+## Technologies Used
 
-- **React**: Kullanıcı arayüzünü oluşturmak için.
-- **React Router DOM**: Uygulama içinde yönlendirme ve sayfalar arası geçişler için.
-- **MUI (Material-UI)**: Modern ve duyarlı kullanıcı arayüzü bileşenleri için.
-- **Redux Toolkit**: Durum yönetimi için.
-- **Stripe**: Ödeme işlemleri için.
+- **React**: For building the user interface.
+- **React Router DOM**: For routing and navigation.
+- **MUI (Material-UI)**: For modern and responsive UI components.
+- **Redux Toolkit**: For state management.
+- **Stripe**: For payment processing.
