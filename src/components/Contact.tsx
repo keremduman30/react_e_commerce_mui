@@ -16,17 +16,25 @@ const StyledInput = styled("input")({
 }); */
 const StyledTextField = styled(TextField)({
   backgroundColor: "white",
-
-  "&:focus": {
-    outline: "none",
+  borderRadius: "5px 0 0 5px",
+  "& .MuiOutlinedInput-notchedOutline": {
+    border: "none",
   },
 });
-const StyledButton = styled(Box)({
+const StyledButton = styled(Box)(({ theme }) => ({
   padding: "10px",
   color: "white",
   backgroundColor: "#333",
   borderRadius: "0 5px 5px 0",
-});
+
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "8px",
+    padding: "0 6px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+}));
 
 const Contact = () => {
   return (
